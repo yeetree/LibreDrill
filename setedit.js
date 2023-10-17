@@ -52,6 +52,7 @@ function updateset() {
 
     cset = cs;
     
+    moveset(cs)
+
     return {s: setn, c: counts, sd: side, sty: stepsy, stin: stepsin, yd: yard, stl: stepsl, lin: linein, ln: line}
-    
 }

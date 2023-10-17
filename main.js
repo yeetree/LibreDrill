@@ -8,6 +8,8 @@ let fieldlabels = new container();
 
 let field = new container();
 
+let perf = new canvasentity(20, 20)
+
 function createField() {
     let f = new canvasentity(1000, 600);
 
@@ -163,6 +165,25 @@ function createFLabels() {
     return f;
 }
 
+function moveset(set) {
+    stepx = 4.375;
+    stepy = 4.7619047619;
+
+    if(set.yard == 10) { perf.pos.x = (stepx * 96) + (stepx * set.stepsy) - 5 }
+    else if(set.side == 1) { perf.pos.x = 70 + (stepx * set.yard * 8) + (stepx * set.stepsy) - 5 }
+    else if(set.side == 0) { perf.pos.x = 420 + (stepx * (10-set.yard) * 8) + (stepx * set.stepsy) - 5 }
+
+    let y = 0;
+    if(set.line == 0) { y = 0}
+    else if(set.line == 1) { y = stepy * 28}
+    else if(set.line == 2) { y = stepy * 56}
+    else if(set.line == 3) { y = stepy * 84}
+
+    y+=stepy*set.stepsl-4
+
+    perf.pos.y = y;
+}
+
 //Async load function to load sprites and start galaxy
 async function load() {
     fieldspr = createField();
@@ -173,7 +194,18 @@ async function load() {
     field.pos.x = 80;
     field.pos.y = 100;
 
+    perf = new canvasentity(10, 10)
+    perf.sprite.ctx.fillStyle = "red";
+    perf.sprite.ctx.beginPath();
+    perf.sprite.ctx.arc(5, 5, 5, 0, 2 * Math.PI);
+    perf.sprite.ctx.fill();
+    perf.layer = 2
+
+    field.addChild(perf)
+
     game.scene.addChild(field);
+
+    moveset(cset)
 
     game.start();
 }
