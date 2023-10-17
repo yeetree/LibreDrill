@@ -5,7 +5,57 @@
 	</head>
 	<body>
 		<div id="game"></div>
+		<div id="setedit">
+			<label>Set: </label>
+			<input onchange="updateset()" value="0" id="set" type="number">
+			<label>&nbsp;&nbsp;&nbsp;&nbsp;</label>
+			<label>Counts: </label>
+			<input onchange="updateset()" value="8" id="counts" type="number">
+			
+			<label>&nbsp;&nbsp;&nbsp;&nbsp;</label>
+
+			<select onchange="updateset()" id="side">
+				<option value="sa">Side A:</option>
+				<option value="sb">Side B:</option>
+			</select>
+			<input onchange="updateset()" value="0" id="stepsy" type="number">
+			<select onchange="updateset()" id="stepsin">
+				<option value="in">steps Inside</option>
+				<option value="out">steps Outside</option>
+				<option value="on">On</option>
+			</select>
+			<select onchange="updateset()" id="yard">
+				<option value="10">50 yd ln</option>
+				<option value="9">45 yd ln</option>
+				<option value="8">40 yd ln</option>
+				<option value="7">35 yd ln</option>
+				<option value="6">30 yd ln</option>
+				<option value="5">25 yd ln</option>
+				<option value="4">20 yd ln</option>
+				<option value="3">15 yd ln</option>
+				<option value="2">10 yd ln</option>
+				<option value="1">5 yd ln</option>
+				<option value="0">0 yd ln</option>
+			</select>
+
+			<label>&nbsp;&nbsp;&nbsp;&nbsp;</label>
+
+			<input onchange="updateset()" value="0" id="stepsl" type="number">
+			<select onchange="updateset()" id="linein">
+				<option value="f">steps In Front Of</option>
+				<option value="b">steps Behind</option>
+				<option value="on">On</option>
+			</select>
+			<select onchange="updateset()" id="line">
+				<option value="0">Front Sideline</option>
+				<option value="1">Home Hash</option>
+				<option value="2">Visitor Hash</option>
+				<option value="3">Back Sideline</option>
+			</select>
+		</div>
+		<script src="./setedit.js"></script>
 		<script src="./config.js"></script>
 		<script src="./engine/galaxy.js"></script>
+		<script>updateset();</script>
 	</body>
 </html>
